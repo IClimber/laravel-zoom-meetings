@@ -1,9 +1,6 @@
 # Create Zoom Meetings
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/philharmonie/laravel-zoom-meetings.svg?style=flat-square)](https://packagist.org/packages/philharmonie/laravel-zoom-meetings)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/philharmonie/laravel-zoom-meetings/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/philharmonie/laravel-zoom-meetings/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/philharmonie/laravel-zoom-meetings/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/philharmonie/laravel-zoom-meetings/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/philharmonie/laravel-zoom-meetings.svg?style=flat-square)](https://packagist.org/packages/philharmonie/laravel-zoom-meetings)
+[![Latest Version on Packagist]](https://packagist.org/packages/iclimber/laravel-zoom-meetings)
 
 With this package you can create Zoom meetings from your Laravel application using Server-To-Server OAuth.
 
@@ -12,7 +9,7 @@ With this package you can create Zoom meetings from your Laravel application usi
 You can install the package via composer:
 
 ```bash
-composer require philharmonie/laravel-zoom-meetings
+composer require iclimber/laravel-zoom-meetings
 ```
 
 You can publish the config file with:
@@ -83,14 +80,6 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-If you discover any security-related issues, please email phil@harmonie.media instead of using the issue tracker.
-
-## Credits
-
-- [Phil Harmonie](https://github.com/philharmonie)
 
 ## License
 
