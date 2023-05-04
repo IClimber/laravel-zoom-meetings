@@ -1,6 +1,6 @@
 <?php
 
-namespace Philharmonie\LaravelZoomMeetings;
+namespace IClimber\LaravelZoomMeetings;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;

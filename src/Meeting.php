@@ -1,31 +1,31 @@
 <?php
 
-namespace Philharmonie\LaravelZoomMeetings;
+namespace IClimber\LaravelZoomMeetings;
 
-use Philharmonie\LaravelZoomMeetings\Exceptions\HttpException;
-use Philharmonie\LaravelZoomMeetings\Support\Client;
+use IClimber\LaravelZoomMeetings\Exceptions\HttpException;
+use IClimber\LaravelZoomMeetings\Support\Client;
 
 class Meeting
 {
     protected static string $access_token;
 
-    public static function setAccessToken(string $access_token): meeting
+    public static function setAccessToken(string $access_token): Meeting
     {
         self::$access_token = $access_token;
 
-        return new meeting();
+        return new Meeting();
     }
 
     /**
      * @throws Exceptions\HttpException
      */
-    public function create(array $data, string|null $userId = null): array
+    public function create(array $data, ?string $userId = null): array
     {
-        if (! $userId) {
+        if (!$userId) {
             $userId = 'me';
         }
 
-        return Client::post('users/'.urlencode($userId).'/meetings', $data, self::$access_token);
+        return Client::post('users/' . urlencode($userId) . '/meetings', $data, self::$access_token);
     }
 
     /**
@@ -33,7 +33,7 @@ class Meeting
      */
     public function delete(int $id): array
     {
-        return Client::delete('meetings/'.$id, self::$access_token);
+        return Client::delete('meetings/' . $id, self::$access_token);
     }
 
     /**
@@ -41,11 +41,11 @@ class Meeting
      */
     public function findBy(string $field, string $value, string $userId = null): array
     {
-        if (! $userId) {
+        if (!$userId) {
             $userId = 'me';
         }
 
-        $meetings = Client::get('users/'.urlencode($userId).'/meetings', self::$access_token);
+        $meetings = Client::get('users/' . urlencode($userId) . '/meetings', self::$access_token);
 
         foreach ($meetings['body']['meetings'] as $meeting) {
             if ($meeting[$field] === $value) {

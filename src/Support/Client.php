@@ -1,16 +1,16 @@
 <?php
 
-namespace Philharmonie\LaravelZoomMeetings\Support;
+namespace IClimber\LaravelZoomMeetings\Support;
 
+use IClimber\LaravelZoomMeetings\Exceptions\HttpException;
 use Illuminate\Support\Facades\Http;
-use Philharmonie\LaravelZoomMeetings\Exceptions\HttpException;
 
 class Client
 {
     private static function requestHeaders(string $access_token): array
     {
         return [
-            'authorization' => 'bearer '.$access_token,
+            'authorization' => 'bearer ' . $access_token,
             'accept' => 'application/json',
         ];
     }
@@ -21,7 +21,7 @@ class Client
     public static function get(string $uri, string $access_token): array
     {
         $response = http::withHeaders(self::requestHeaders($access_token))
-            ->get(config('zoom-meetings.base_url').$uri);
+            ->get(config('zoom-meetings.base_url') . $uri);
 
         return self::handleResponse($response, $uri);
     }
@@ -32,7 +32,7 @@ class Client
     public static function post(string $uri, array $data, string $access_token): array
     {
         $response = Http::withHeaders(self::requestHeaders($access_token))
-            ->post(config('zoom-meetings.base_url').$uri, $data);
+            ->post(config('zoom-meetings.base_url') . $uri, $data);
 
         return self::handleResponse($response, $uri);
     }
@@ -43,7 +43,7 @@ class Client
     public static function delete(string $uri, string $access_token): array
     {
         $response = Http::withHeaders(self::requestHeaders($access_token))
-            ->delete(config('zoom-meetings.base_url').$uri);
+            ->delete(config('zoom-meetings.base_url') . $uri);
 
         return self::handleResponse($response, $uri);
     }

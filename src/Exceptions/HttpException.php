@@ -1,14 +1,18 @@
 <?php
 
-namespace Philharmonie\LaravelZoomMeetings\Exceptions;
+namespace IClimber\LaravelZoomMeetings\Exceptions;
 
 use Exception;
 use Throwable;
 
 class HttpException extends Exception
 {
-    public function __construct(private $response, $message = '', $code = 0, Throwable $previous = null)
+    private $response;
+
+    public function __construct($response, $message = '', $code = 0, Throwable $previous = null)
     {
+        $this->response = $response;
+
         parent::__construct($message, $code, $previous);
     }
 

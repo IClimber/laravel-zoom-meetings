@@ -1,19 +1,19 @@
 <?php
 
-namespace Philharmonie\LaravelZoomMeetings;
+namespace IClimber\LaravelZoomMeetings;
 
-use Philharmonie\LaravelZoomMeetings\Exceptions\HttpException;
-use Philharmonie\LaravelZoomMeetings\Support\Client;
+use IClimber\LaravelZoomMeetings\Exceptions\HttpException;
+use IClimber\LaravelZoomMeetings\Support\Client;
 
 class User
 {
     protected static string $access_token;
 
-    public static function setAccessToken(string $access_token): user
+    public static function setAccessToken(string $access_token): User
     {
         self::$access_token = $access_token;
 
-        return new user();
+        return new User();
     }
 
     /**
@@ -29,7 +29,7 @@ class User
      */
     public static function find(string $email): array
     {
-        return Client::get('users/'.urlencode($email), self::$access_token);
+        return Client::get('users/' . urlencode($email), self::$access_token);
     }
 
     /**

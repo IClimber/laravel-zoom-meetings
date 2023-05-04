@@ -1,17 +1,17 @@
 {
-    "name": "philharmonie/laravel-zoom-meetings",
+    "name": "iclimber/laravel-zoom-meetings",
     "description": "Create Zoom Meetings",
     "keywords": [
         "philharmonie",
+        "iclimber",
         "laravel",
         "laravel-zoom-meetings"
     ],
-    "homepage": "https://github.com/philharmonie/laravel-zoom-meetings",
+    "homepage": "https://github.com/IClimber/laravel-zoom-meetings",
     "license": "MIT",
     "authors": [
         {
-            "name": "Phil Harmonie",
-            "email": "phil@harmonie.media",
+            "name": "IClimber",
             "role": "Developer"
         }
     ],
@@ -19,7 +19,8 @@
         "php": "^7.4",
         "guzzlehttp/guzzle": "^7.5",
         "illuminate/contracts": "^v8.0.0",
-        "spatie/laravel-package-tools": "^1.12.1"
+        "spatie/laravel-package-tools": "^1.12.1",
+        "ext-json": "*"
     },
     "require-dev": {
         "nunomaduro/collision": "^v5.11.0",
@@ -27,12 +28,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Philharmonie\\LaravelZoomMeetings\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Philharmonie\\LaravelZoomMeetings\\Tests\\": "tests/"
+            "IClimber\\LaravelZoomMeetings\\": "src/"
         }
     },
     "scripts": {
@@ -48,10 +44,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Philharmonie\\LaravelZoomMeetings\\LaravelZoomMeetingsServiceProvider"
+                "IClimber\\LaravelZoomMeetings\\LaravelZoomMeetingsServiceProvider"
             ],
             "aliases": {
-                "LaravelZoomMeetings": "Philharmonie\\LaravelZoomMeetings\\Facades\\LaravelZoomMeetings"
+                "LaravelZoomMeetings": "IClimber\\LaravelZoomMeetings\\Facades\\LaravelZoomMeetings"
             }
         }
     },

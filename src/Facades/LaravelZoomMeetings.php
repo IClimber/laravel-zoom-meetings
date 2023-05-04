@@ -1,12 +1,12 @@
 <?php
 
-namespace Philharmonie\LaravelZoomMeetings\Facades;
+namespace IClimber\LaravelZoomMeetings\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Philharmonie\LaravelZoomMeetings\Meeting;
+use IClimber\LaravelZoomMeetings\Meeting;
 
 /**
- * @see \Philharmonie\LaravelZoomMeetings\Facades\Meeting
+ * @see \IClimber\LaravelZoomMeetings\Facades\Meeting
  */
 class LaravelZoomMeetings extends Facade
 {
