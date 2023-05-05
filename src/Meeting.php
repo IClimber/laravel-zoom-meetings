@@ -7,11 +7,11 @@ use IClimber\LaravelZoomMeetings\Support\Client;
 
 class Meeting
 {
-    protected static string $access_token;
+    protected static string $accessToken;
 
-    public static function setAccessToken(string $access_token): Meeting
+    public static function setAccessToken(string $accessToken): Meeting
     {
-        self::$access_token = $access_token;
+        self::$accessToken = $accessToken;
 
         return new Meeting();
     }
@@ -25,7 +25,7 @@ class Meeting
             $userId = 'me';
         }
 
-        return Client::post('users/' . urlencode($userId) . '/meetings', $data, self::$access_token);
+        return Client::post('users/' . urlencode($userId) . '/meetings', $data, self::$accessToken);
     }
 
     /**
@@ -33,7 +33,7 @@ class Meeting
      */
     public function delete(int $id): array
     {
-        return Client::delete('meetings/' . $id, self::$access_token);
+        return Client::delete('meetings/' . $id, self::$accessToken);
     }
 
     /**
@@ -45,7 +45,7 @@ class Meeting
             $userId = 'me';
         }
 
-        $meetings = Client::get('users/' . urlencode($userId) . '/meetings', self::$access_token);
+        $meetings = Client::get('users/' . urlencode($userId) . '/meetings', self::$accessToken);
 
         foreach ($meetings['body']['meetings'] as $meeting) {
             if ($meeting[$field] === $value) {

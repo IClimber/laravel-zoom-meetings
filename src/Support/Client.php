@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\Http;
 
 class Client
 {
-    private static function requestHeaders(string $access_token): array
+    private static function requestHeaders(string $accessToken): array
     {
         return [
-            'authorization' => 'bearer ' . $access_token,
+            'authorization' => 'bearer ' . $accessToken,
             'accept' => 'application/json',
         ];
     }
@@ -18,9 +18,9 @@ class Client
     /**
      * @throws httpexception
      */
-    public static function get(string $uri, string $access_token): array
+    public static function get(string $uri, string $accessToken): array
     {
-        $response = http::withHeaders(self::requestHeaders($access_token))
+        $response = http::withHeaders(self::requestHeaders($accessToken))
             ->get(config('zoom-meetings.base_url') . $uri);
 
         return self::handleResponse($response, $uri);
@@ -29,9 +29,9 @@ class Client
     /**
      * @throws httpexception
      */
-    public static function post(string $uri, array $data, string $access_token): array
+    public static function post(string $uri, array $data, string $accessToken): array
     {
-        $response = Http::withHeaders(self::requestHeaders($access_token))
+        $response = Http::withHeaders(self::requestHeaders($accessToken))
             ->post(config('zoom-meetings.base_url') . $uri, $data);
 
         return self::handleResponse($response, $uri);
@@ -40,9 +40,9 @@ class Client
     /**
      * @throws HttpException
      */
-    public static function delete(string $uri, string $access_token): array
+    public static function delete(string $uri, string $accessToken): array
     {
-        $response = Http::withHeaders(self::requestHeaders($access_token))
+        $response = Http::withHeaders(self::requestHeaders($accessToken))
             ->delete(config('zoom-meetings.base_url') . $uri);
 
         return self::handleResponse($response, $uri);

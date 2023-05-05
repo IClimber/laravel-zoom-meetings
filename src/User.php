@@ -7,11 +7,11 @@ use IClimber\LaravelZoomMeetings\Support\Client;
 
 class User
 {
-    protected static string $access_token;
+    protected static string $accessToken;
 
-    public static function setAccessToken(string $access_token): User
+    public static function setAccessToken(string $accessToken): User
     {
-        self::$access_token = $access_token;
+        self::$accessToken = $accessToken;
 
         return new User();
     }
@@ -21,7 +21,7 @@ class User
      */
     public static function all(): array
     {
-        return Client::get('users', self::$access_token);
+        return Client::get('users', self::$accessToken);
     }
 
     /**
@@ -29,7 +29,7 @@ class User
      */
     public static function find(string $email): array
     {
-        return Client::get('users/' . urlencode($email), self::$access_token);
+        return Client::get('users/' . urlencode($email), self::$accessToken);
     }
 
     /**
@@ -37,6 +37,6 @@ class User
      */
     public function me(): array
     {
-        return Client::get('users/me', self::$access_token);
+        return Client::get('users/me', self::$accessToken);
     }
 }
