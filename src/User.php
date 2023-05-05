@@ -3,6 +3,7 @@
 namespace IClimber\LaravelZoomMeetings;
 
 use IClimber\LaravelZoomMeetings\Exceptions\HttpException;
+use IClimber\LaravelZoomMeetings\Exceptions\InvalidAccessTokenException;
 use IClimber\LaravelZoomMeetings\Support\Client;
 
 class User
@@ -17,7 +18,9 @@ class User
     }
 
     /**
+     * @return array
      * @throws HttpException
+     * @throws InvalidAccessTokenException
      */
     public static function all(): array
     {
@@ -25,7 +28,10 @@ class User
     }
 
     /**
+     * @param string $email
+     * @return array
      * @throws HttpException
+     * @throws InvalidAccessTokenException
      */
     public static function find(string $email): array
     {
@@ -33,7 +39,9 @@ class User
     }
 
     /**
+     * @return array
      * @throws HttpException
+     * @throws InvalidAccessTokenException
      */
     public function me(): array
     {

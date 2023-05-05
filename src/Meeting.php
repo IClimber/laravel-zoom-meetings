@@ -3,6 +3,7 @@
 namespace IClimber\LaravelZoomMeetings;
 
 use IClimber\LaravelZoomMeetings\Exceptions\HttpException;
+use IClimber\LaravelZoomMeetings\Exceptions\InvalidAccessTokenException;
 use IClimber\LaravelZoomMeetings\Support\Client;
 
 class Meeting
@@ -17,7 +18,11 @@ class Meeting
     }
 
     /**
-     * @throws Exceptions\HttpException
+     * @param array $data
+     * @param string|null $userId
+     * @return array
+     * @throws HttpException
+     * @throws InvalidAccessTokenException
      */
     public function create(array $data, ?string $userId = null): array
     {
@@ -29,7 +34,10 @@ class Meeting
     }
 
     /**
-     * @throws Exceptions\HttpException
+     * @param int $id
+     * @return array
+     * @throws HttpException
+     * @throws InvalidAccessTokenException
      */
     public function delete(int $id): array
     {
@@ -37,7 +45,12 @@ class Meeting
     }
 
     /**
+     * @param string $field
+     * @param string $value
+     * @param string|null $userId
+     * @return array
      * @throws HttpException
+     * @throws InvalidAccessTokenException
      */
     public function findBy(string $field, string $value, string $userId = null): array
     {

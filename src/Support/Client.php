@@ -3,7 +3,10 @@
 namespace IClimber\LaravelZoomMeetings\Support;
 
 use IClimber\LaravelZoomMeetings\Exceptions\HttpException;
+use IClimber\LaravelZoomMeetings\Exceptions\InvalidAccessTokenException;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
+use Symfony\Component\HttpFoundation\Response as BaseResponse;
 
 class Client
 {
@@ -16,7 +19,11 @@ class Client
     }
 
     /**
-     * @throws httpexception
+     * @param string $uri
+     * @param string $accessToken
+     * @return array
+     * @throws HttpException
+     * @throws InvalidAccessTokenException
      */
     public static function get(string $uri, string $accessToken): array
     {
@@ -27,7 +34,12 @@ class Client
     }
 
     /**
-     * @throws httpexception
+     * @param string $uri
+     * @param array $data
+     * @param string $accessToken
+     * @return array
+     * @throws HttpException
+     * @throws InvalidAccessTokenException
      */
     public static function post(string $uri, array $data, string $accessToken): array
     {
@@ -38,7 +50,11 @@ class Client
     }
 
     /**
+     * @param string $uri
+     * @param string $accessToken
+     * @return array
      * @throws HttpException
+     * @throws InvalidAccessTokenException
      */
     public static function delete(string $uri, string $accessToken): array
     {
@@ -49,18 +65,26 @@ class Client
     }
 
     /**
+     * @param Response $response
+     * @param $uri
+     * @return array
      * @throws HttpException
+     * @throws InvalidAccessTokenException
      */
-    private static function handleResponse($response, $uri): array
+    private static function handleResponse(Response $response, $uri): array
     {
         if ($response->failed()) {
+            if ($response->status() == BaseResponse::HTTP_UNAUTHORIZED) {
+                throw new InvalidAccessTokenException($response->body());
+            }
+
             $message = $response->json('error_message', 'unknown error');
             throw HttpException::new($uri, $response->status(), $message, $response->json());
         }
 
         return [
             'status' => $response->status(),
-            'body' => json_decode($response->getbody(), true),
+            'body' => json_decode($response->body(), true),
         ];
     }
 }
