@@ -35,13 +35,14 @@ class Meeting
 
     /**
      * @param int $id
+     * @param array $data
      * @return array
      * @throws HttpException
      * @throws InvalidAccessTokenException
      */
-    public function delete(int $id): array
+    public function delete(int $id, array $data = []): array
     {
-        return Client::delete('meetings/' . $id, self::$accessToken);
+        return Client::delete('meetings/' . $id, $data, self::$accessToken);
     }
 
     /**

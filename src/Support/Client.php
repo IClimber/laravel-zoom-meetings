@@ -51,15 +51,16 @@ class Client
 
     /**
      * @param string $uri
+     * @param array $data
      * @param string $accessToken
      * @return array
      * @throws HttpException
      * @throws InvalidAccessTokenException
      */
-    public static function delete(string $uri, string $accessToken): array
+    public static function delete(string $uri, array $data, string $accessToken): array
     {
         $response = Http::withHeaders(self::requestHeaders($accessToken))
-            ->delete(config('zoom-meetings.base_url') . $uri);
+            ->delete(config('zoom-meetings.base_url') . $uri, $data);
 
         return self::handleResponse($response, $uri);
     }
