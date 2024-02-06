@@ -57,6 +57,22 @@ class Client
      * @throws HttpException
      * @throws InvalidAccessTokenException
      */
+    public static function patch(string $uri, array $data, string $accessToken): array
+    {
+        $response = Http::withHeaders(self::requestHeaders($accessToken))
+            ->patch(config('zoom-meetings.base_url') . $uri, $data);
+
+        return self::handleResponse($response, $uri);
+    }
+
+    /**
+     * @param string $uri
+     * @param array $data
+     * @param string $accessToken
+     * @return array
+     * @throws HttpException
+     * @throws InvalidAccessTokenException
+     */
     public static function delete(string $uri, array $data, string $accessToken): array
     {
         $response = Http::withHeaders(self::requestHeaders($accessToken))

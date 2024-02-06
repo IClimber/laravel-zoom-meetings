@@ -40,6 +40,18 @@ class Meeting
      * @throws HttpException
      * @throws InvalidAccessTokenException
      */
+    public function edit(int $id, array $data): array
+    {
+        return Client::patch('meetings/' . $id, $data, self::$accessToken);
+    }
+
+    /**
+     * @param int $id
+     * @param array $data
+     * @return array
+     * @throws HttpException
+     * @throws InvalidAccessTokenException
+     */
     public function delete(int $id, array $data = []): array
     {
         return Client::delete('meetings/' . $id, $data, self::$accessToken);
